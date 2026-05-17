@@ -16,8 +16,7 @@ The codebase reproduces a 40-cell experiment grid in which the REVE EEG foundati
 │   ├── run_logreg.py            # linear probe on pooled embeddings (LOSO)
 │   └── run_lora.py              # LoRA fine-tune of REVE (LOSO)
 ├── slurm/                       # SLURM submission templates
-├── cells/grid_40.csv            # the 40-experiment matrix
-├── results/RESULTS.csv          # final results (acc, F1, AUROC, sens, spec)
+├── results/RESULTS.csv          # final results for the 40 experiments (acc, F1, AUROC, sens, spec)
 ├── environment.yml              # conda environment
 └── REPRODUCING.md               # end-to-end reproduction instructions
 ```
@@ -35,7 +34,7 @@ See `REPRODUCING.md` for the full pipeline. A summary:
 1. `preprocess.py` produces one `.npz` per (montage, epoch) combination.
 2. `extract_embeddings.py` produces a corresponding embeddings `.npz`.
 3. `run_logreg.py` runs the linear probe; `run_lora.py` runs LoRA fine-tuning.
-4. All four scripts accept a single cell at a time; the file `cells/grid_40.csv` enumerates the 40 cells used in the thesis.
+4. All four scripts accept a single cell at a time; the 40 `(montage, epoch, method)` triples used in the thesis are recorded in `results/RESULTS.csv`.
 
 The full grid can be reproduced on a single H100 GPU in roughly five days of wall-clock time. Preprocessing and the linear-probe step run on CPU; the LoRA step requires a GPU.
 

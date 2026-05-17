@@ -28,7 +28,7 @@ huggingface-cli download brain-bzh/reve-positions --local-dir model_cache/reve-p
 
 ## The pipeline (one cell at a time)
 
-A *cell* is defined by `(montage, epoch)`. The 40 cells in the thesis are listed in `cells/grid_40.csv`. For a single cell, e.g. `4ch_contralateral × 4sec`:
+A *cell* is defined by `(montage, epoch)`. The 40 `(montage, epoch, method)` combinations used in the thesis are recorded in `results/RESULTS.csv` (first three columns). For a single cell, e.g. `4ch_contralateral × 4sec`:
 
 ```
 # 1. Preprocess raw recordings -> epoched .npz
@@ -63,7 +63,7 @@ MONTAGE=4ch_contralateral EPOCH=4sec sbatch slurm/extract_embeddings.sh
 MONTAGE=4ch_contralateral EPOCH=4sec sbatch slurm/run_lora.sh
 ```
 
-To reproduce the full 40-cell grid, loop over rows of `cells/grid_40.csv` and submit each as a separate job. Logistic-regression cells are CPU-bound and run in seconds; LoRA cells take roughly 1–10 hours per cell on an H100 GPU depending on epoch count.
+To reproduce the full 40-cell grid, iterate over the unique `(montage, epoch, method)` rows in `results/RESULTS.csv` and submit each as a separate job. Logistic-regression cells are CPU-bound and run in seconds; LoRA cells take roughly 1–10 hours per cell on an H100 GPU depending on epoch count.
 
 ## Output schema
 
