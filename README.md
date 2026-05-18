@@ -25,7 +25,7 @@ The codebase reproduces a 40-cell experiment grid in which the REVE EEG foundati
 
 The BrainClinics TDBRAIN dataset is restricted and must be requested from the Brainclinics Foundation: <https://brainclinics.com/tdbrain>. Once obtained, place the raw CSV files at `data/raw/brainclinics/` following the original directory layout (`tinnitus/sub-*/ses-*/eeg/*.csv` and `control/sub-*/ses-*/eeg/*.csv`).
 
-The REVE foundation model (`brain-bzh/reve-base`) and its companion position bank (`brain-bzh/reve-positions`) are loaded from the Hugging Face Hub on first use. To enable offline cluster execution, the cache directory can be pre-populated with `huggingface-cli download` and the path supplied via the `--model-cache` argument.
+The REVE foundation model (`brain-bzh/reve-base`) and its companion position bank (`brain-bzh/reve-positions`) are loaded from the Hugging Face Hub on first use. 
 
 ## Reproducing the experiments
 
