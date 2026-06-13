@@ -1,0 +1,19 @@
+__pycache__/
+*.pyc
+.DS_Store
+.idea/
+.vscode/
+
+# Data and intermediate artifacts — never commit
+data/
+model_cache/
+preprocessed/
+embeddings/
+logs/
+slurm-*.out
+*.npz
+*.placeholder*.json
+
+# Results subdirectory contains per-cell JSONs; keep only the aggregated CSV
+results/*.json
+!results/RESULTS.csv
